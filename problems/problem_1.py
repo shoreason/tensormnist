@@ -12,21 +12,26 @@ def variable(shape, name):
 
 
 def create_model(x, input_size, output_size):
-	hidden_layer_size = 800
+    hidden_layer_size = 800
 
-	# Hidden layer 1
-	# Insert your code here!
+    # Hidden layer 1
+    # Insert your code here!
+    W1 = variable([input_size, hidden_layer_size], "W1")
+    b1 = variable([hidden_layer_size], "b1")
+    h1 = tf.nn.relu(tf.matmul(x, W1) + b1, name = "h1")
+    
+    # Hidden layer 2
+    # Insert your code here!
+    W2 = variable([hidden_layer_size, hidden_layer_size], "W2")
+    b2 = variable([hidden_layer_size], "b2")
+    h2 = tf.nn.relu(tf.matmul(h1, W2) + b2, name = "h2")
 
-	# Hidden layer 2
-	# Insert your code here!
-	h2 = ... # This should be your second hidden layer
+    # Output layer
+    W_out = variable([hidden_layer_size, output_size], "W_out")
+    b_out = variable([output_size], "b_out")
+    y = tf.nn.softmax(tf.matmul(h2, W_out) + b_out, name = "y")
 
-	# Output layer
-	W_out = variable([hidden_layer_size, output_size], "W_out")
-	b_out = variable([output_size], "b_out")
-	y = tf.nn.softmax(tf.matmul(h2, W_out) + b_out, name = "y")
-
-	return y
+    return y
 
 
 mnist = input_data.read_data_sets('MNIST_data', one_hot=True)

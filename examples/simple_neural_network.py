@@ -29,8 +29,9 @@ class NeuralNetworkLayer:
 
 inputs = [1, 2, 3]
 hidden_layer = NeuralNetworkLayer(3, 4, sigmoid)
+hidden_layer2 = NeuralNetworkLayer(4, 4, sigmoid)
 output_layer = NeuralNetworkLayer(4, 2, softmax)
-outputs = output_layer.apply(hidden_layer.apply(inputs))
+outputs = output_layer.apply(hidden_layer2.apply(hidden_layer.apply(inputs)))
 print("Input: {}".format(inputs))
 print("Hidden layer:\n  Weights: {}\n  Bias: {}".format(hidden_layer.weights, hidden_layer.bias))
 print("Output: {}".format(outputs))

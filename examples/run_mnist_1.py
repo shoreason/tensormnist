@@ -11,7 +11,7 @@ learning_rate = 0.05
 iterations = 4000
 
 # Other constants
-input_size = 28 * 28
+input_size = 28 * 28 # 784
 output_size = 10
 
 # Just a little function to define a TensorFlow variable.  We make our variables'
@@ -28,7 +28,7 @@ y_ = tf.placeholder(tf.float32, shape = [None, output_size], name = "y_")
 # Hidden layer
 W1 = variable([input_size, hidden_layer_size], "W1")
 b1 = variable([hidden_layer_size], "b1")
-h1 = tf.nn.relu(tf.matmul(x, W1) + b1, name = "h1")
+h1 = tf.nn.relu(tf.matmul(x, W1) + b1, name = "h1") # h = a(W1x + b1)
 
 # Output layer
 W_out = variable([hidden_layer_size, output_size], "W_out")
